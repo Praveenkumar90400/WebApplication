@@ -1,0 +1,836 @@
+Started by user Praveen Kumar 
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/Boardgame
+[Pipeline] {
+[Pipeline] tool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Git Checkout)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+The recommended git tool is: NONE
+Warning: CredentialId "git-cred" could not be found.
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/Boardgame/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Praveenkumar90400/WebApp.git # timeout=10
+Fetching upstream changes from https://github.com/Praveenkumar90400/WebApp.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/Praveenkumar90400/WebApp.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 749d6c362e97a31a49988152b1681e5d7398dde5 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 749d6c362e97a31a49988152b1681e5d7398dde5 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 749d6c362e97a31a49988152b1681e5d7398dde5 # timeout=10
+Commit message: "Update deployment-service.yaml"
+ > git rev-list --no-walk 749d6c362e97a31a49988152b1681e5d7398dde5 # timeout=10
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Compile)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn compile
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.javaproject:database_service_project >--------------
+[INFO] Building database_service_project 0.0.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.20.0-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (jacoco-initialize) @ database_service_project ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 19 resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ database_service_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.834 s
+[INFO] Finished at: 2024-12-02T06:15:47Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Test)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn test
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.javaproject:database_service_project >--------------
+[INFO] Building database_service_project 0.0.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.20.0-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (jacoco-initialize) @ database_service_project ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 19 resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ database_service_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Boardgame/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ database_service_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ database_service_project ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.javaproject.DatabaseServiceProjectApplicationTests
+06:15:53.148 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+06:15:53.173 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+06:15:53.285 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.javaproject.DatabaseServiceProjectApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+06:15:53.316 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.DatabaseServiceProjectApplicationTests], using SpringBootContextLoader
+06:15:53.327 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTests-context.xml] does not exist
+06:15:53.328 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTestsContext.groovy] does not exist
+06:15:53.328 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+06:15:53.330 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: DatabaseServiceProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+06:15:53.454 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.javaproject.DatabaseServiceProjectApplicationTests]
+06:15:53.602 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/Boardgame/target/classes/com/javaproject/DatabaseServiceProjectApplication.class]
+06:15:53.603 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.DatabaseServiceProjectApplicationTests
+06:15:53.822 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.javaproject.DatabaseServiceProjectApplicationTests]: using defaults.
+06:15:53.826 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+06:15:53.877 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@43f61afb, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@713064e8, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@4fad6218, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1bf39d06, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@68217d41, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1ac45389, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3e5d4f6b, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@39c1fe0b, org.springframework.test.context.event.EventPublishingTestExecutionListener@5ae95707, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@62891fc8, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@367b22e5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@fca387, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@10bd9df0, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3ae0b770, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@55e3d6c3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@30e6a763, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4c48fe92]
+06:15:53.887 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@3659d7b1 testClass = DatabaseServiceProjectApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@2015b2cd testClass = DatabaseServiceProjectApplicationTests, locations = '{}', classes = '{class com.javaproject.DatabaseServiceProjectApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@3bdb2c78 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@4263b080, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@62d363ab, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4c4d362a, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@f713686, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@3676ac27, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@68267da0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+06:15:53.976 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2024-12-02 06:15:54.670  INFO 6577 --- [           main] j.DatabaseServiceProjectApplicationTests : Starting DatabaseServiceProjectApplicationTests using Java 17.0.9 on JenkinsVM.example.net with PID 6577 (started by jenkins in /var/lib/jenkins/workspace/Boardgame)
+2024-12-02 06:15:54.680  INFO 6577 --- [           main] j.DatabaseServiceProjectApplicationTests : No active profile set, falling back to default profiles: default
+2024-12-02 06:15:56.248  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:15:56.251  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-12-02 06:15:56.271  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2024-12-02 06:15:56.290  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:15:56.292  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 06:15:56.302  INFO 6577 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-12-02 06:15:57.281  INFO 6577 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-02 06:15:57.775  INFO 6577 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-02 06:15:58.202  INFO 6577 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 06:15:58.286  INFO 6577 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2024-12-02 06:15:58.517  INFO 6577 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-12-02 06:15:58.760  INFO 6577 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-12-02 06:15:59.152  INFO 6577 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-02 06:15:59.167  INFO 6577 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:15:59.434  WARN 6577 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 06:15:59.529  INFO 6577 --- [           main] o.s.s.p.JdbcUserDetailsManager           : No authentication manager set. Reauthentication of users when changing passwords will not be performed.
+2024-12-02 06:16:00.181  INFO 6577 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6ed810f3, org.springframework.security.web.context.SecurityContextPersistenceFilter@467c77b2, org.springframework.security.web.header.HeaderWriterFilter@4f3bc463, org.springframework.security.web.authentication.logout.LogoutFilter@c1bed9e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@2ffb6cf6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5471182c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11972f4a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7dbfb886, org.springframework.security.web.session.SessionManagementFilter@3e39823a, org.springframework.security.web.access.ExceptionTranslationFilter@6980c9c3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@63f70fd7]
+2024-12-02 06:16:00.860  INFO 6577 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-12-02 06:16:00.964  INFO 6577 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-02 06:16:01.518  INFO 6577 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-12-02 06:16:01.518  INFO 6577 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-12-02 06:16:01.520  INFO 6577 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-12-02 06:16:01.559  INFO 6577 --- [           main] j.DatabaseServiceProjectApplicationTests : Started DatabaseServiceProjectApplicationTests in 7.571 seconds (JVM running for 9.925)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.123 s - in com.javaproject.DatabaseServiceProjectApplicationTests
+[INFO] Running com.javaproject.TestDatabase
+2024-12-02 06:16:02.058  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestDatabase], using SpringBootContextLoader
+2024-12-02 06:16:02.060  INFO 6577 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestDatabase]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:02.060  INFO 6577 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestDatabase]: TestDatabase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:02.071  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestDatabase
+2024-12-02 06:16:02.074  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:02.077  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1fc0e258, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6cba98b5, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@69612ba4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@47e4126a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5f2efaec, org.springframework.test.context.support.DirtiesContextTestExecutionListener@67e9ae8c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7b595de, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6025a000, org.springframework.test.context.event.EventPublishingTestExecutionListener@4874df72, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@62c3853e, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@4973f7dd, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@49b6b53, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6afaabfd, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@146e29e9, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@42f5e9a6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1debc358, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2271265b]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 s - in com.javaproject.TestDatabase
+[INFO] Running com.javaproject.TestController
+2024-12-02 06:16:02.193  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestController], using SpringBootContextLoader
+2024-12-02 06:16:02.196  INFO 6577 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestController]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:02.198  INFO 6577 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestController]: TestController does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:02.202  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestController
+2024-12-02 06:16:02.208  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:02.210  INFO 6577 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@23e2bcbe, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1055cfeb, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@2e8a3f87, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@1006d396, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@26378a64, org.springframework.test.context.support.DirtiesContextTestExecutionListener@18a323de, org.springframework.test.context.transaction.TransactionalTestExecutionListener@67aa514a, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4196a44a, org.springframework.test.context.event.EventPublishingTestExecutionListener@5be872b6, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@5a5407c6, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@6f413dc7, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1b816091, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@364cc95, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@79749108, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1f3d34e4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@f284a7a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2a0d2f6e]
+return value is: 5
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /boardgameAdded
+       Parameters = {name=[onecard], level=[1], minPlayers=[2], maxPlayers=[+], gameType=[Party Game]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.javaproject.controllers.HomeController
+           Method = com.javaproject.controllers.HomeController#boardgameAdded(BoardGame)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = redirect:/
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 302
+    Error message = null
+          Headers = [Content-Language:"en", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", Location:"/"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = /
+          Cookies = []
+return value is: 1
+return value is: 1
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.031 s - in com.javaproject.TestController
+2024-12-02 06:16:03.370  INFO 6577 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:16:03.370  INFO 6577 --- [ionShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-12-02 06:16:03.375  INFO 6577 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-02 06:16:03.378  INFO 6577 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.367 s
+[INFO] Finished at: 2024-12-02T06:16:03Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (File System Scan)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ trivy fs --format table -o trivy-fs-report.html .
+2024-12-02T06:16:04Z	INFO	[vuln] Vulnerability scanning is enabled
+2024-12-02T06:16:04Z	INFO	[secret] Secret scanning is enabled
+2024-12-02T06:16:04Z	INFO	[secret] If your scanning is slow, please try '--scanners vuln' to disable secret scanning
+2024-12-02T06:16:04Z	INFO	[secret] Please see also https://aquasecurity.github.io/trivy/v0.57/docs/scanner/secret#recommendation for faster secret detection
+2024-12-02T06:16:04Z	WARN	[pom] Dependency version cannot be determined. Child dependencies will not be found.	details="https://aquasecurity.github.io/trivy/v0.57/docs/coverage/language/java#empty-dependency-version"
+2024-12-02T06:16:05Z	INFO	Number of language-specific files	num=1
+2024-12-02T06:16:05Z	INFO	[pom] Detecting vulnerabilities...
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.javaproject:database_service_project >--------------
+[INFO] Building database_service_project 0.0.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.20.0-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (jacoco-initialize) @ database_service_project ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 19 resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ database_service_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Boardgame/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ database_service_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ database_service_project ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.javaproject.DatabaseServiceProjectApplicationTests
+06:16:11.564 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+06:16:11.586 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+06:16:11.707 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.javaproject.DatabaseServiceProjectApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+06:16:11.766 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.DatabaseServiceProjectApplicationTests], using SpringBootContextLoader
+06:16:11.787 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTests-context.xml] does not exist
+06:16:11.789 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTestsContext.groovy] does not exist
+06:16:11.789 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+06:16:11.790 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: DatabaseServiceProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+06:16:11.976 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.javaproject.DatabaseServiceProjectApplicationTests]
+06:16:12.243 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/Boardgame/target/classes/com/javaproject/DatabaseServiceProjectApplication.class]
+06:16:12.246 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.DatabaseServiceProjectApplicationTests
+06:16:12.514 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.javaproject.DatabaseServiceProjectApplicationTests]: using defaults.
+06:16:12.514 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+06:16:12.572 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7cb8437d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@62a4417, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@43f61afb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@713064e8, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4fad6218, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1bf39d06, org.springframework.test.context.transaction.TransactionalTestExecutionListener@68217d41, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1ac45389, org.springframework.test.context.event.EventPublishingTestExecutionListener@3e5d4f6b, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@39c1fe0b, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5ae95707, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@62891fc8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@367b22e5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@fca387, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@10bd9df0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3ae0b770, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@55e3d6c3]
+06:16:12.579 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@6b2e0f78 testClass = DatabaseServiceProjectApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@240f6c41 testClass = DatabaseServiceProjectApplicationTests, locations = '{}', classes = '{class com.javaproject.DatabaseServiceProjectApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@3659d7b1 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@37cd92d6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@71f67a79, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@22c01ab0, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@23c388c2, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@30b34287, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2898ac89], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+06:16:12.647 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2024-12-02 06:16:13.244  INFO 6721 --- [           main] j.DatabaseServiceProjectApplicationTests : Starting DatabaseServiceProjectApplicationTests using Java 17.0.9 on JenkinsVM.example.net with PID 6721 (started by jenkins in /var/lib/jenkins/workspace/Boardgame)
+2024-12-02 06:16:13.254  INFO 6721 --- [           main] j.DatabaseServiceProjectApplicationTests : No active profile set, falling back to default profiles: default
+2024-12-02 06:16:14.882  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:16:14.884  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-12-02 06:16:14.902  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JDBC repository interfaces.
+2024-12-02 06:16:14.919  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:16:14.923  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 06:16:14.932  INFO 6721 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-12-02 06:16:15.870  INFO 6721 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-02 06:16:16.320  INFO 6721 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-02 06:16:16.685  INFO 6721 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 06:16:16.764  INFO 6721 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2024-12-02 06:16:17.018  INFO 6721 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-12-02 06:16:17.251  INFO 6721 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-12-02 06:16:17.651  INFO 6721 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-02 06:16:17.666  INFO 6721 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:16:17.940  WARN 6721 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 06:16:18.037  INFO 6721 --- [           main] o.s.s.p.JdbcUserDetailsManager           : No authentication manager set. Reauthentication of users when changing passwords will not be performed.
+2024-12-02 06:16:18.688  INFO 6721 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65876774, org.springframework.security.web.context.SecurityContextPersistenceFilter@a04462d, org.springframework.security.web.header.HeaderWriterFilter@76225435, org.springframework.security.web.authentication.logout.LogoutFilter@23943a02, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@34d20206, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d7341a8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3e39823a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@11ef3bee, org.springframework.security.web.session.SessionManagementFilter@6980c9c3, org.springframework.security.web.access.ExceptionTranslationFilter@434c2bbf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2712bbab]
+2024-12-02 06:16:19.344  INFO 6721 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-12-02 06:16:19.464  INFO 6721 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-02 06:16:19.966  INFO 6721 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-12-02 06:16:19.967  INFO 6721 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-12-02 06:16:19.968  INFO 6721 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-12-02 06:16:19.994  INFO 6721 --- [           main] j.DatabaseServiceProjectApplicationTests : Started DatabaseServiceProjectApplicationTests in 7.336 seconds (JVM running for 9.97)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.05 s - in com.javaproject.DatabaseServiceProjectApplicationTests
+[INFO] Running com.javaproject.TestDatabase
+2024-12-02 06:16:20.447  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestDatabase], using SpringBootContextLoader
+2024-12-02 06:16:20.449  INFO 6721 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestDatabase]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:20.449  INFO 6721 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestDatabase]: TestDatabase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:20.459  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestDatabase
+2024-12-02 06:16:20.464  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:20.465  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@637bae77, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@423b3147, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6b076bf4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@578a17cb, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@693c135b, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7296a632, org.springframework.test.context.transaction.TransactionalTestExecutionListener@221e3b5f, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@25ad5498, org.springframework.test.context.event.EventPublishingTestExecutionListener@2c823dbd, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@6be2b929, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@3875b3c9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@773329cb, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@4ae19d45, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@34b45ec1, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@21ca5865, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4f5950e6, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@994f7fd]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s - in com.javaproject.TestDatabase
+[INFO] Running com.javaproject.TestController
+2024-12-02 06:16:20.557  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestController], using SpringBootContextLoader
+2024-12-02 06:16:20.558  INFO 6721 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestController]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:20.558  INFO 6721 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestController]: TestController does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:20.560  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestController
+2024-12-02 06:16:20.562  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:20.563  INFO 6721 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@366ccef0, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5887015, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@213229a5, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6331b2d, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@56785e55, org.springframework.test.context.support.DirtiesContextTestExecutionListener@10b69457, org.springframework.test.context.transaction.TransactionalTestExecutionListener@20f9e8e5, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3e0d75a4, org.springframework.test.context.event.EventPublishingTestExecutionListener@2a930ec6, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@e2333ef, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@61725c0e, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3487a5d1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6d078b9, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@11fb9fc7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@629a23da, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6b3abb75, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6e2a031b]
+return value is: 5
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /boardgameAdded
+       Parameters = {name=[onecard], level=[1], minPlayers=[2], maxPlayers=[+], gameType=[Party Game]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.javaproject.controllers.HomeController
+           Method = com.javaproject.controllers.HomeController#boardgameAdded(BoardGame)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = redirect:/
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 302
+    Error message = null
+          Headers = [Content-Language:"en", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", Location:"/"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = /
+          Cookies = []
+return value is: 1
+return value is: 1
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.997 s - in com.javaproject.TestController
+2024-12-02 06:16:21.747  INFO 6721 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:16:21.747  INFO 6721 --- [ionShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-12-02 06:16:21.751  INFO 6721 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-02 06:16:21.755  INFO 6721 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.2.0:jar (default-jar) @ database_service_project ---
+[INFO] 
+[INFO] --- spring-boot:2.5.6:repackage (repackage) @ database_service_project ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- jacoco:0.8.7:report (jacoco-site) @ database_service_project ---
+[INFO] Loading execution data file /var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] Analyzed bundle 'database_service_project' with 9 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.369 s
+[INFO] Finished at: 2024-12-02T06:16:23Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Maven Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean install
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.javaproject:database_service_project >--------------
+[INFO] Building database_service_project 0.0.4
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 1 problem was encountered while building the effective model for org.javassist:javassist:jar:3.20.0-GA during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ database_service_project ---
+[INFO] Deleting /var/lib/jenkins/workspace/Boardgame/target
+[INFO] 
+[INFO] --- jacoco:0.8.7:prepare-agent (jacoco-initialize) @ database_service_project ---
+[INFO] argLine set to -javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.2.0:resources (default-resources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 19 resources
+[INFO] 
+[INFO] --- compiler:3.8.1:compile (default-compile) @ database_service_project ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to /var/lib/jenkins/workspace/Boardgame/target/classes
+[INFO] /var/lib/jenkins/workspace/Boardgame/src/main/java/com/javaproject/database/DatabaseAccess.java: /var/lib/jenkins/workspace/Boardgame/src/main/java/com/javaproject/database/DatabaseAccess.java uses unchecked or unsafe operations.
+[INFO] /var/lib/jenkins/workspace/Boardgame/src/main/java/com/javaproject/database/DatabaseAccess.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ database_service_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/Boardgame/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.1:testCompile (default-testCompile) @ database_service_project ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /var/lib/jenkins/workspace/Boardgame/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ database_service_project ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.javaproject.DatabaseServiceProjectApplicationTests
+06:16:32.217 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+06:16:32.246 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+06:16:32.415 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.javaproject.DatabaseServiceProjectApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+06:16:32.454 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.DatabaseServiceProjectApplicationTests], using SpringBootContextLoader
+06:16:32.468 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTests-context.xml] does not exist
+06:16:32.469 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: class path resource [com/javaproject/DatabaseServiceProjectApplicationTestsContext.groovy] does not exist
+06:16:32.469 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+06:16:32.471 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.javaproject.DatabaseServiceProjectApplicationTests]: DatabaseServiceProjectApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+06:16:32.595 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.javaproject.DatabaseServiceProjectApplicationTests]
+06:16:32.712 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/var/lib/jenkins/workspace/Boardgame/target/classes/com/javaproject/DatabaseServiceProjectApplication.class]
+06:16:32.714 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.DatabaseServiceProjectApplicationTests
+06:16:32.933 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.javaproject.DatabaseServiceProjectApplicationTests]: using defaults.
+06:16:32.935 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+06:16:32.985 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7cb8437d, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@62a4417, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@43f61afb, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@713064e8, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4fad6218, org.springframework.test.context.support.DirtiesContextTestExecutionListener@1bf39d06, org.springframework.test.context.transaction.TransactionalTestExecutionListener@68217d41, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1ac45389, org.springframework.test.context.event.EventPublishingTestExecutionListener@3e5d4f6b, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@39c1fe0b, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@5ae95707, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@62891fc8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@367b22e5, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@fca387, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@10bd9df0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3ae0b770, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@55e3d6c3]
+06:16:32.993 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@6b2e0f78 testClass = DatabaseServiceProjectApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@240f6c41 testClass = DatabaseServiceProjectApplicationTests, locations = '{}', classes = '{class com.javaproject.DatabaseServiceProjectApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@3659d7b1 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@37cd92d6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@71f67a79, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@22c01ab0, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@23c388c2, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@30b34287, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@2898ac89], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+06:16:33.074 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.5.6)
+
+2024-12-02 06:16:33.792  INFO 6855 --- [           main] j.DatabaseServiceProjectApplicationTests : Starting DatabaseServiceProjectApplicationTests using Java 17.0.9 on JenkinsVM.example.net with PID 6855 (started by jenkins in /var/lib/jenkins/workspace/Boardgame)
+2024-12-02 06:16:33.800  INFO 6855 --- [           main] j.DatabaseServiceProjectApplicationTests : No active profile set, falling back to default profiles: default
+2024-12-02 06:16:35.587  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:16:35.589  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-12-02 06:16:35.609  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 JDBC repository interfaces.
+2024-12-02 06:16:35.630  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-12-02 06:16:35.634  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-02 06:16:35.643  INFO 6855 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2 ms. Found 0 JPA repository interfaces.
+2024-12-02 06:16:36.540  INFO 6855 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-12-02 06:16:37.007  INFO 6855 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-12-02 06:16:37.422  INFO 6855 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-02 06:16:37.515  INFO 6855 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2024-12-02 06:16:37.749  INFO 6855 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-12-02 06:16:38.004  INFO 6855 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-12-02 06:16:38.471  INFO 6855 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-12-02 06:16:38.498  INFO 6855 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:16:38.769  WARN 6855 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-02 06:16:38.873  INFO 6855 --- [           main] o.s.s.p.JdbcUserDetailsManager           : No authentication manager set. Reauthentication of users when changing passwords will not be performed.
+2024-12-02 06:16:39.595  INFO 6855 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d6d5c2a, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b9bb6e6, org.springframework.security.web.header.HeaderWriterFilter@42bd5540, org.springframework.security.web.authentication.logout.LogoutFilter@69dd03a0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4aa136ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6771c4d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6beb047e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d06a341, org.springframework.security.web.session.SessionManagementFilter@3a8a823c, org.springframework.security.web.access.ExceptionTranslationFilter@3e1c58c9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2a144ea0]
+2024-12-02 06:16:40.302  INFO 6855 --- [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2024-12-02 06:16:40.414  INFO 6855 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-12-02 06:16:40.982  INFO 6855 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-12-02 06:16:40.983  INFO 6855 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-12-02 06:16:40.985  INFO 6855 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2024-12-02 06:16:41.020  INFO 6855 --- [           main] j.DatabaseServiceProjectApplicationTests : Started DatabaseServiceProjectApplicationTests in 7.93 seconds (JVM running for 10.364)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.503 s - in com.javaproject.DatabaseServiceProjectApplicationTests
+[INFO] Running com.javaproject.TestDatabase
+2024-12-02 06:16:41.512  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestDatabase], using SpringBootContextLoader
+2024-12-02 06:16:41.513  INFO 6855 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestDatabase]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:41.515  INFO 6855 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestDatabase]: TestDatabase does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:41.520  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestDatabase
+2024-12-02 06:16:41.524  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:41.525  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7296a632, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@221e3b5f, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@25ad5498, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2c823dbd, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6be2b929, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3875b3c9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@773329cb, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@4ae19d45, org.springframework.test.context.event.EventPublishingTestExecutionListener@34b45ec1, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@21ca5865, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@4f5950e6, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@994f7fd, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1fc0e258, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6cba98b5, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@69612ba4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@47e4126a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5f2efaec]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 s - in com.javaproject.TestDatabase
+[INFO] Running com.javaproject.TestController
+2024-12-02 06:16:41.606  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.javaproject.TestController], using SpringBootContextLoader
+2024-12-02 06:16:41.608  INFO 6855 --- [           main] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [com.javaproject.TestController]: no resource found for suffixes {-context.xml, Context.groovy}.
+2024-12-02 06:16:41.609  INFO 6855 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.javaproject.TestController]: TestController does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-12-02 06:16:41.613  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.javaproject.DatabaseServiceProjectApplication for test class com.javaproject.TestController
+2024-12-02 06:16:41.615  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener, org.springframework.security.test.context.support.ReactorContextTestExecutionListener]
+2024-12-02 06:16:41.616  INFO 6855 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@10b69457, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@20f9e8e5, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3e0d75a4, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2a930ec6, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@e2333ef, org.springframework.test.context.support.DirtiesContextTestExecutionListener@61725c0e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@3487a5d1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6d078b9, org.springframework.test.context.event.EventPublishingTestExecutionListener@11fb9fc7, org.springframework.security.test.context.support.WithSecurityContextTestExecutionListener@629a23da, org.springframework.security.test.context.support.ReactorContextTestExecutionListener@6b3abb75, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@6e2a031b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@23e2bcbe, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1055cfeb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2e8a3f87, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1006d396, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@26378a64]
+return value is: 5
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /boardgameAdded
+       Parameters = {name=[onecard], level=[1], minPlayers=[2], maxPlayers=[+], gameType=[Party Game]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.javaproject.controllers.HomeController
+           Method = com.javaproject.controllers.HomeController#boardgameAdded(BoardGame)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = redirect:/
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 302
+    Error message = null
+          Headers = [Content-Language:"en", X-Content-Type-Options:"nosniff", X-XSS-Protection:"1; mode=block", Cache-Control:"no-cache, no-store, max-age=0, must-revalidate", Pragma:"no-cache", Expires:"0", Location:"/"]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = /
+          Cookies = []
+return value is: 1
+return value is: 1
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.007 s - in com.javaproject.TestController
+2024-12-02 06:16:42.770  INFO 6855 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-02 06:16:42.771  INFO 6855 --- [ionShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-12-02 06:16:42.774  INFO 6855 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-12-02 06:16:42.777  INFO 6855 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.2.0:jar (default-jar) @ database_service_project ---
+[INFO] Building jar: /var/lib/jenkins/workspace/Boardgame/target/database_service_project-0.0.4.jar
+[INFO] 
+[INFO] --- spring-boot:2.5.6:repackage (repackage) @ database_service_project ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- jacoco:0.8.7:report (jacoco-site) @ database_service_project ---
+[INFO] Loading execution data file /var/lib/jenkins/workspace/Boardgame/target/jacoco.exec
+[INFO] Analyzed bundle 'database_service_project' with 9 classes
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ database_service_project ---
+[INFO] Installing /var/lib/jenkins/workspace/Boardgame/target/database_service_project-0.0.4.jar to /var/lib/jenkins/.m2/repository/com/javaproject/database_service_project/0.0.4/database_service_project-0.0.4.jar
+[INFO] Installing /var/lib/jenkins/workspace/Boardgame/pom.xml to /var/lib/jenkins/.m2/repository/com/javaproject/database_service_project/0.0.4/database_service_project-0.0.4.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.658 s
+[INFO] Finished at: 2024-12-02T06:16:44Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Debug)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ whoami
+jenkins
+[Pipeline] sh
++ groups
+jenkins docker
+[Pipeline] sh
++ ls -l /var/run/docker.sock
+srw-rw---- 1 root docker 0 Dec  2 04:41 /var/run/docker.sock
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build & Tag Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u praveenkumar90400 -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/workspace/Boardgame@tmp/6e5f8b89-2b9a-4cb0-b11b-ca3e49ccc292/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker build -t praveenkumar90400/pkwebapp:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 204B done
+#1 DONE 0.0s
+
+#2 [auth] adoptopenjdk/openjdk11:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/adoptopenjdk/openjdk11:latest
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/3] FROM docker.io/adoptopenjdk/openjdk11:latest@sha256:942442948181b91a8c48acc7845f952d6e35386d9665c451990cf19d2b04420c
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 48.13MB 0.4s done
+#6 DONE 0.4s
+
+#5 [1/3] FROM docker.io/adoptopenjdk/openjdk11:latest@sha256:942442948181b91a8c48acc7845f952d6e35386d9665c451990cf19d2b04420c
+#5 CACHED
+
+#7 [2/3] COPY target/*.jar /usr/src/app/app.jar
+#7 DONE 0.7s
+
+#8 [3/3] WORKDIR /usr/src/app
+#8 DONE 0.0s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.3s done
+#9 writing image sha256:0937aa5b5be4248a44dfc45601b9c6159a781989c406537cb0944ff2ab3fc4a7 done
+#9 naming to docker.io/praveenkumar90400/pkwebapp:latest done
+#9 DONE 0.3s
+
+ [33m1 warning found (use docker --debug to expand):
+[0m - LegacyKeyValueFormat: "ENV key=value" should be used instead of legacy "ENV key value" format (line 5)
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Push Docker Image)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] withDockerRegistry
+$ docker login -u praveenkumar90400 -p ******** https://index.docker.io/v1/
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/workspace/Boardgame@tmp/484a00b2-35d9-49ed-abd8-92c088e6f2c8/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+[Pipeline] {
+[Pipeline] sh
++ docker push praveenkumar90400/pkwebapp:latest
+The push refers to repository [docker.io/praveenkumar90400/pkwebapp]
+5f70bf18a086: Preparing
+f5d2b41d3e91: Preparing
+ea81e35be464: Preparing
+64a8c413ae78: Preparing
+fffe76c64ef2: Preparing
+fffe76c64ef2: Layer already exists
+5f70bf18a086: Layer already exists
+64a8c413ae78: Layer already exists
+ea81e35be464: Layer already exists
+f5d2b41d3e91: Pushed
+latest: digest: sha256:5bf9b46c51f0269a8f3a7d34921a11ab5c3c8af4b50f212a6a2b3084ca390c64 size: 1372
+[Pipeline] }
+[Pipeline] // withDockerRegistry
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy To Kubernetes)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withKubeConfig
+[Pipeline] {
+[Pipeline] sh
++ kubectl apply -f deployment-service.yaml
+deployment.apps/pkwebapp-deployment unchanged
+service/pkwebapp-ssvc unchanged
+[Pipeline] }
+[kubernetes-cli] kubectl configuration cleaned up
+[Pipeline] // withKubeConfig
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Verify the Deployment)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withKubeConfig
+[Pipeline] {
+[Pipeline] sh
++ kubectl get pods -n webapps
+NAME                                   READY   STATUS    RESTARTS   AGE
+pkwebapp-deployment-5d78b44c74-qz6sb   1/1     Running   0          23m
+pkwebapp-deployment-5d78b44c74-w2drw   1/1     Running   0          23m
+[Pipeline] sh
++ kubectl get svc -n webapps
+NAME            TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
+pkwebapp-ssvc   LoadBalancer   10.109.119.115   <pending>     80:30267/TCP   23m
+[Pipeline] }
+[kubernetes-cli] kubectl configuration cleaned up
+[Pipeline] // withKubeConfig
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
